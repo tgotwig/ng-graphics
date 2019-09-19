@@ -5,9 +5,11 @@ declare const $: any;
 @Component({
   selector: 'lib-bar-chart',
   template: `
-    <svg width=500 height=500 />
+    <svg />
   `,
-  styles: []
+  styles: [
+    'svg { width: 100%; height: 100%; }'
+  ]
 })
 export class NgBarChartComponent implements OnInit {
   d3: any;
@@ -42,8 +44,8 @@ export class NgBarChartComponent implements OnInit {
     const svg = d3.select('svg');
 
     const margin = {top: 20, right: 20, bottom: 30, left: 40};
-    const width = +svg.attr('width') - margin.left - margin.right;
-    const height = +svg.attr('height') - margin.top - margin.bottom;
+    const width = +document.querySelector('svg').clientWidth - margin.left - margin.right;
+    const height = +document.querySelector('svg').clientHeight - margin.top - margin.bottom;
 
     const x = d3.scaleBand().rangeRound([0, width]).padding(0.1);
     const y = d3.scaleLinear().rangeRound([height, 0]);
