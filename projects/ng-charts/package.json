@@ -1,0 +1,17 @@
+{
+  "name": "@tgotwig/ng-charts",
+  "version": "0.0.2",
+  "repository": {
+    "type": "git",
+    "url": "git-https://github.com/TGotwig/ng-charts"
+  },
+  "homepage": "https://github.com/TGotwig/ng-charts",
+  "peerDependencies": {
+    "@angular/common": "^8.2.7",
+    "@angular/core": "^8.2.7"
+  },
+  "dependencies": {
+    "d3": "^5.12.0",
+    "jquery": "^3.4.1"
+  }
+}
