@@ -1,24 +1,35 @@
-# NgCharts
+# ng-charts
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.7.
+A d3-driven charts library for Angular applications 📊
+contributor friendly and idiomatic 🤗
 
-## Code scaffolding
+## Getting Started
 
-Run `ng generate component component-name --project ngCharts` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngCharts`.
-> Note: Don't forget to add `--project ngCharts` or else it will be added to the default project in your `angular.json` file. 
+First Install this dependency:
 
-## Build
+```shell
+npm i @tgotwig/ng-charts
+```
 
-Run `ng build ngCharts` to build the project. The build artifacts will be stored in the `dist/` directory.
+Then put the following line into your **app.module.ts** file and add that variable to your **imports** array:
 
-## Publishing
+```typescript
+import { NgChartsModule } from "@tgotwig/ng-charts";
+```
 
-After building your library with `ng build ngCharts`, go to the dist folder `cd dist/ng-charts` and run `npm publish`.
+Add the following to lines to your **angular.json**:
 
-## Running unit tests
+```text
+"node_modules/d3/dist/d3.min.js",
+"node_modules/jquery/dist/jquery.min.js"
+```
 
-Run `ng test ngCharts` to execute the unit tests via [Karma](https://karma-runner.github.io).
+If for instance you want a bar-chart, add this to your html:
 
-## Further help
+```html
+<div style="width: 800px; height: 500px;">
+  <lib-bar-chart></lib-bar-chart>
+</div>
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+It will fill inherit the height and the width of it's parent element 🌳
