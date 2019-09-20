@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 declare const d3: any;
 declare const $: any;
 
@@ -14,33 +14,12 @@ declare const $: any;
 export class NgBarChartComponent implements OnInit {
   d3: any;
   $: any;
+  @Input() data: any;
 
   constructor() { }
 
   ngOnInit() {
-    const data = [
-      {
-        letter: 'A',
-        frequency: d3.randomUniform(1, 5)()
-      },
-      {
-        letter: 'B',
-        frequency: d3.randomUniform(1, 5)()
-      },
-      {
-        letter: 'C',
-        frequency: d3.randomUniform(1, 5)()
-      },
-      {
-        letter: 'D',
-        frequency: d3.randomUniform(1, 5)()
-      },
-      {
-        letter: 'E',
-        frequency: d3.randomUniform(1, 5)()
-      }
-    ];
-
+    const data = this.data;
     const svg = d3.select('svg');
 
     const margin = {top: 20, right: 20, bottom: 30, left: 40};

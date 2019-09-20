@@ -27,9 +27,20 @@ Add the following to lines to your **angular.json**:
 If for instance you want a bar-chart, add this to your html:
 
 ```html
-<div style="width: 800px; height: 500px;">
-  <lib-bar-chart></lib-bar-chart>
+<div style="height: 500px; width: 500px">
+  <lib-bar-chart
+    [data]="[
+      {
+        letter: 'A',
+        frequency: 30
+      },
+      {
+        letter: 'B',
+        frequency: 50
+      }
+    ]"
+  ></lib-bar-chart>
 </div>
 ```
 
-It will fill inherit the height and the width of it's parent element 🌳
+It will inherit the height and the width of its parent element 🌳
