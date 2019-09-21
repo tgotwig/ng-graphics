@@ -5,7 +5,7 @@
     "type": "git",
     "url": "git-https://github.com/TGotwig/ng-charts"
   },
-  "homepage": "https://github.com/TGotwig/ng-charts",
+  "homepage": "https://tgotwig.github.io/ng-charts",
   "peerDependencies": {
     "@angular/common": "^8.2.7",
     "@angular/core": "^8.2.7"
