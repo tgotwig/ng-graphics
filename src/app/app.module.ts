@@ -10,9 +10,11 @@ import { MyNavComponent } from './components/my-nav/my-nav.component';
 import { ComponentsComponent } from './components/components/components.component';
 
 import material from './app.material';
+import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 
 const appRoutes: Routes = [
   { path: 'components', component: ComponentsComponent },
+  { path: 'components/barchart', component: BarChartComponent },
   { path: '', redirectTo: '/components', pathMatch: 'full'},
   { path: '**', component: ComponentsComponent }
 ];
@@ -21,7 +23,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     MyNavComponent,
-    ComponentsComponent
+    ComponentsComponent,
+    BarChartComponent
   ],
   imports: [
     BrowserModule,
