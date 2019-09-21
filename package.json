@@ -8,7 +8,8 @@
     "build:ngCharts": "ng build ngCharts",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "ng build ngCharts && ng build --base-href https://tgotwig.github.io/ng-charts/ && gh-pages -d dist/ng-charts"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +23,7 @@
     "@angular/platform-browser": "~8.2.7",
     "@angular/platform-browser-dynamic": "~8.2.7",
     "@angular/router": "~8.2.7",
+    "gh-pages": "^2.1.1",
     "hammerjs": "^2.0.8",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
