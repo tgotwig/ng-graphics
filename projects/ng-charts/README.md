@@ -31,12 +31,12 @@ If for instance you want a bar-chart, add this to your html:
   <lib-bar-chart
     [data]="[
       {
-        letter: 'A',
-        frequency: 30
+        key: 'A',
+        value: 30
       },
       {
-        letter: 'B',
-        frequency: 50
+        key: 'B',
+        value: 50
       }
     ]"
   ></lib-bar-chart>

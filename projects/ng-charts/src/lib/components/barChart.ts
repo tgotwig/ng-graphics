@@ -4,12 +4,8 @@ declare const $: any;
 
 @Component({
   selector: 'lib-bar-chart',
-  template: `
-    <svg />
-  `,
-  styles: [
-    'svg { width: 100%; height: 100%; }'
-  ]
+  template: `<svg />`,
+  styles: ['svg { width: 100%; height: 100%; }']
 })
 export class NgBarChartComponent implements OnInit {
   d3: any;
@@ -32,42 +28,36 @@ export class NgBarChartComponent implements OnInit {
     const g = svg.append('g')
       .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
-    x.domain(data.map(function(d) { return d.letter; }));
-    y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+    x.domain(data.map( (d: any) => d.key));
+    y.domain([0, d3.max(data, (d: any) => d.value)]);
 
     g.append('g')
-        .attr('class', 'axis axis--x')
-        .attr('transform', 'translate(0,' + height + ')')
-        .call(d3.axisBottom(x));
+      .attr('class', 'axis axis--x')
+      .attr('transform', 'translate(0,' + height + ')')
+      .call(d3.axisBottom(x));
 
     g.append('g')
-        .attr('class', 'axis axis--y')
-        .call(d3.axisLeft(y))
-        .append('text')
-        .attr('transform', 'rotate(-90)')
-        .attr('y', 6)
-        .attr('dy', '0.71em')
-        .attr('text-anchor', 'end')
-        .text('Frequency');
+      .attr('class', 'axis axis--y')
+      .call(d3.axisLeft(y));
 
     g.selectAll('.bar')
-        .data(data)
-        .enter().append('rect')
+      .data(data)
+      .enter()
+      .append('rect')
         .attr('class', 'bar')
-        .attr('x', function(d) { return x(d.letter); })
-        .attr('y', function(d) { return y(d.frequency); })
+        .attr('x', (d: any) => x(d.key))
+        .attr('y', (d: any) => y(d.value))
         .attr('width', x.bandwidth())
-        .attr('height', function(d) { return height - y(d.frequency); })
-        .attr('title', d => d.frequency)
+        .attr('height', (d: any) => height - y(d.value))
+        .attr('title', (d: any) => d.value)
         .style('fill', 'steelblue')
-        .on('mouseover mousemove', function(d) {
-        $(this).css('fill', 'tomato');
-      })
-        .on('mouseout', function(d) {
-        $(this).css('fill', 'steelblue');
-      });
+        .on('mouseover mousemove', function(d: any) {
+          $(this).css('fill', 'tomato');
+        })
+          .on('mouseout', function(d: any) {
+          $(this).css('fill', 'steelblue');
+        });
 
     return svg.node();
   }
-
 }

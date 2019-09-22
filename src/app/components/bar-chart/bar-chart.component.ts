@@ -8,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class BarChartComponent implements OnInit {
   data = [
     {
-      letter: 'A',
-      frequency: 30
+      key: 'A',
+      value: 30
     },
     {
-      letter: 'B',
-      frequency: 50
+      key: 'B',
+      value: 50
     }
   ];
 
