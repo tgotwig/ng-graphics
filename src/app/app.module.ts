@@ -11,10 +11,12 @@ import { ComponentsComponent } from './components/components/components.componen
 
 import material from './app.material';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
+import { ScatterChartComponent } from './components/scatter-chart/scatter-chart.component';
 
 const appRoutes: Routes = [
   { path: 'components', component: ComponentsComponent },
   { path: 'components/barchart', component: BarChartComponent },
+  { path: 'components/scatterchart', component: ScatterChartComponent },
   { path: '', redirectTo: '/components', pathMatch: 'full'},
   { path: '**', component: ComponentsComponent }
 ];
@@ -24,7 +26,8 @@ const appRoutes: Routes = [
     AppComponent,
     MyNavComponent,
     ComponentsComponent,
-    BarChartComponent
+    BarChartComponent,
+    ScatterChartComponent
   ],
   imports: [
     BrowserModule,
