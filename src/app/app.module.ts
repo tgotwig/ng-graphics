@@ -12,11 +12,13 @@ import { ComponentsComponent } from './components/components/components.componen
 import material from './app.material';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { ScatterChartComponent } from './components/scatter-chart/scatter-chart.component';
+import { HistogramComponent } from './components/histogram/histogram.component';
 
 const appRoutes: Routes = [
   { path: 'components', component: ComponentsComponent },
   { path: 'components/barchart', component: BarChartComponent },
   { path: 'components/scatterchart', component: ScatterChartComponent },
+  { path: 'components/histogram', component: HistogramComponent },
   { path: '', redirectTo: '/components', pathMatch: 'full'},
   { path: '**', component: ComponentsComponent }
 ];
@@ -27,7 +29,8 @@ const appRoutes: Routes = [
     MyNavComponent,
     ComponentsComponent,
     BarChartComponent,
-    ScatterChartComponent
+    ScatterChartComponent,
+    HistogramComponent
   ],
   imports: [
     BrowserModule,
