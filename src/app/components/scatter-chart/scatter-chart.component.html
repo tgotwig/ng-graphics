@@ -1,5 +1,17 @@
 <mat-card>
-  <div style="height: 500px; width: 500px">
-    <lib-scatter-chart [data]="data"></lib-scatter-chart>
-  </div>
+  <section>
+    <div>
+      <h1>Scatter-Chart</h1>
+      <div id="plotArea">
+        <lib-scatter-chart [data]="data"></lib-scatter-chart>
+      </div>
+    </div>
+    <aside>
+      <h2>Data example</h2>
+      <pre><code [highlight]="dataStr"></code></pre>
+    </aside>
+  </section>
+
+  <h2>Selector</h2>
+  <pre><code [highlight]="selector"></code></pre>
 </mat-card>

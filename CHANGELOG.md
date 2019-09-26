@@ -12,3 +12,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - New component for plotting a Scatter-Chart
 - New component for plotting a Histogram
 - Add live-plots for Scatter-Chart and Histogram to the homepage
+- Add selector and data-example for each component on the homepage

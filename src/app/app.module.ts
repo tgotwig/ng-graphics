@@ -23,6 +23,20 @@ const appRoutes: Routes = [
   { path: '**', component: ComponentsComponent }
 ];
 
+import { HighlightModule } from 'ngx-highlightjs';
+import xml from 'highlight.js/lib/languages/xml';
+import scss from 'highlight.js/lib/languages/scss';
+import typescript from 'highlight.js/lib/languages/typescript';
+import json from 'highlight.js/lib/languages/typescript';
+export function hljsLanguages() {
+  return [
+    {name: 'typescript', func: typescript},
+    {name: 'scss', func: scss},
+    {name: 'xml', func: xml},
+    {name: 'json', func: json}
+  ];
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +51,10 @@ const appRoutes: Routes = [
     NgChartsModule,
     BrowserAnimationsModule,
     ...material,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HighlightModule.forRoot({
+      languages: hljsLanguages
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

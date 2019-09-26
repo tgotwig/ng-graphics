@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bar-chart.component.scss']
 })
 export class BarChartComponent implements OnInit {
+  selector = 'lib-bar-chart';
   data = [
     {
       key: 'A',
@@ -16,6 +17,8 @@ export class BarChartComponent implements OnInit {
       value: 50
     }
   ];
+  dataStr = JSON.stringify(this.data, null, 2);
+
 
   constructor() { }
 

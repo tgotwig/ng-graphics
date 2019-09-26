@@ -1,5 +1,15 @@
 <mat-card>
-  <div style="height: 500px; width: 500px">
-    <lib-histogram [data]="data"></lib-histogram>
-  </div>
+  <section>
+    <div>
+      <h1>Histogram</h1>
+      <lib-histogram [data]="data"></lib-histogram>
+    </div>
+    <aside>
+      <h2>Data example</h2>
+      <pre><code [highlight]="dataStr"></code></pre>
+    </aside>
+  </section>
+
+  <h2>Selector</h2>
+  <pre><code [highlight]="selector"></code></pre>
 </mat-card>

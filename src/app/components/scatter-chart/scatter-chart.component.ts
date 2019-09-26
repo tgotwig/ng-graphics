@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./scatter-chart.component.scss']
 })
 export class ScatterChartComponent implements OnInit {
-  data = Array.from({length: 30}, () => ({x: Math.random(), y: Math.pow(Math.random(), 2)}));
+  selector = 'lib-scatter-chart';
+  data = Array.from({length: 3}, () => ({x: Math.random(), y: Math.pow(Math.random(), 2)}));
+  dataStr = JSON.stringify(this.data, null, 2);
 
   constructor() { }
 
