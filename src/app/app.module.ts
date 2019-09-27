@@ -13,12 +13,14 @@ import material from './app.material';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { ScatterChartComponent } from './components/scatter-chart/scatter-chart.component';
 import { HistogramComponent } from './components/histogram/histogram.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 
 const appRoutes: Routes = [
   { path: 'components', component: ComponentsComponent },
   { path: 'components/barchart', component: BarChartComponent },
   { path: 'components/scatterchart', component: ScatterChartComponent },
   { path: 'components/histogram', component: HistogramComponent },
+  { path: 'components/piechart', component: PieChartComponent },
   { path: '', redirectTo: '/components', pathMatch: 'full'},
   { path: '**', component: ComponentsComponent }
 ];
@@ -28,6 +30,7 @@ import xml from 'highlight.js/lib/languages/xml';
 import scss from 'highlight.js/lib/languages/scss';
 import typescript from 'highlight.js/lib/languages/typescript';
 import json from 'highlight.js/lib/languages/typescript';
+
 export function hljsLanguages() {
   return [
     {name: 'typescript', func: typescript},
@@ -44,7 +47,8 @@ export function hljsLanguages() {
     ComponentsComponent,
     BarChartComponent,
     ScatterChartComponent,
-    HistogramComponent
+    HistogramComponent,
+    PieChartComponent
   ],
   imports: [
     BrowserModule,
