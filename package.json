@@ -2,14 +2,11 @@
   "name": "ng-charts",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "build:ngCharts": "ng build ngCharts",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e",
-    "deploy": "ng build ngCharts && ng build --base-href https://tgotwig.github.io/ng-charts/ && gh-pages -d dist/ng-charts"
+    "build:web": "ng build",
+    "build:lib": "ng build ngCharts",
+    "deploy:web": "ng build ngCharts && ng build --base-href https://tgotwig.github.io/ng-charts/ && gh-pages -d dist/ng-charts",
+    "deploy:lib": "npm run build:lib && cd dist/ng-charts && npm publish"
   },
   "private": true,
   "dependencies": {
