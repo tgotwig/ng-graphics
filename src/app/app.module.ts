@@ -1,15 +1,17 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { NgChartsModule } from 'ng-charts';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import material from './app.material';
+
+import { HighlightModule } from 'ngx-highlightjs';
+import json from 'highlight.js/lib/languages/typescript';
 
 import { MyNavComponent } from './components/my-nav/my-nav.component';
 import { ComponentsComponent } from './components/components/components.component';
-
-import material from './app.material';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { ScatterChartComponent } from './components/scatter-chart/scatter-chart.component';
 import { HistogramComponent } from './components/histogram/histogram.component';
@@ -25,17 +27,8 @@ const appRoutes: Routes = [
   { path: '**', component: ComponentsComponent }
 ];
 
-import { HighlightModule } from 'ngx-highlightjs';
-import xml from 'highlight.js/lib/languages/xml';
-import scss from 'highlight.js/lib/languages/scss';
-import typescript from 'highlight.js/lib/languages/typescript';
-import json from 'highlight.js/lib/languages/typescript';
-
 export function hljsLanguages() {
   return [
-    {name: 'typescript', func: typescript},
-    {name: 'scss', func: scss},
-    {name: 'xml', func: xml},
     {name: 'json', func: json}
   ];
 }
