@@ -38,7 +38,14 @@ export class NgPieChartComponent implements OnInit {
 
     arc.append('path')
       .attr('d', path)
-      .attr('fill', (d: any) => color(d.data.percentage));
+      .attr('fill', (d: any) => color(d.data.percentage))
+      .style('opacity', '0.8')
+      .on('mouseover mousemove', function(d: any) {
+        $(this).css('opacity', '1.0');
+      })
+      .on('mouseout', function(d: any) {
+        $(this).css('opacity', '0.8');
+      });
 
     return svg.node();
   }

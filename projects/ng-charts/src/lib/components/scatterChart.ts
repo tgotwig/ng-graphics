@@ -48,7 +48,15 @@ export class NgScatterChartComponent implements OnInit {
       .enter().append('circle')
         .attr('cx', (d: any) => xScale(d.x))
         .attr('cy', (d: any) => yScale(d.y))
-        .attr('r', 2.5);
+        .attr('r', 2.5)
+        .style('fill', 'steelblue')
+        .style('opacity', '0.8')
+        .on('mouseover mousemove', function(d: any) {
+          $(this).css('opacity', '1.0');
+        })
+        .on('mouseout', function(d: any) {
+          $(this).css('opacity', '0.8');
+        });
 
     return svg.node();
   }

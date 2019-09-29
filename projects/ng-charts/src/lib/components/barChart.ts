@@ -51,11 +51,12 @@ export class NgBarChartComponent implements OnInit {
         .attr('height', (d: any) => height - y(d.value))
         .attr('title', (d: any) => d.value)
         .style('fill', 'steelblue')
+        .style('opacity', '0.8')
         .on('mouseover mousemove', function(d: any) {
-          $(this).css('fill', 'tomato');
+          $(this).css('opacity', '1.0');
         })
-          .on('mouseout', function(d: any) {
-          $(this).css('fill', 'steelblue');
+        .on('mouseout', function(d: any) {
+          $(this).css('opacity', '0.8');
         });
 
     return svg.node();

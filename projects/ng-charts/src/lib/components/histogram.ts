@@ -63,7 +63,15 @@ export class NgHistogramComponent implements OnInit {
       .attr('fill', 'steelblue')
       .attr('fill-opacity', 1)
       .attr('y', d => y(d.length))
-      .attr('height', d => y(0) - y(d.length));
+      .attr('height', d => y(0) - y(d.length))
+      .style('fill', 'steelblue')
+      .style('opacity', '0.8')
+      .on('mouseover mousemove', function(d: any) {
+        $(this).css('opacity', '1.0');
+      })
+      .on('mouseout', function(d: any) {
+        $(this).css('opacity', '0.8');
+      });
 
     xAxis.call(xAxisCall);
     yAxis.call(yAxisCall);
