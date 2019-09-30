@@ -3,6 +3,7 @@ import { NgBarChartComponent } from './components/barChart';
 import { NgScatterChartComponent } from './components/scatterChart';
 import { NgHistogramComponent } from './components/histogram';
 import { NgPieChartComponent } from './components/pieChart';
+import { NgHeatmapComponent } from './components/heatmap';
 
 
 
@@ -11,7 +12,8 @@ import { NgPieChartComponent } from './components/pieChart';
     NgBarChartComponent,
     NgScatterChartComponent,
     NgHistogramComponent,
-    NgPieChartComponent
+    NgPieChartComponent,
+    NgHeatmapComponent
   ],
   imports: [
   ],
@@ -19,7 +21,8 @@ import { NgPieChartComponent } from './components/pieChart';
     NgBarChartComponent,
     NgScatterChartComponent,
     NgHistogramComponent,
-    NgPieChartComponent
+    NgPieChartComponent,
+    NgHeatmapComponent
   ]
 })
 export class NgChartsModule { }
