@@ -1,1 +1,17 @@
-<lib-heatmap [data]="data"></lib-heatmap>
+<mat-card>
+  <section>
+    <div>
+      <h1>Bar-Chart</h1>
+      <div id="plotArea">
+        <lib-heatmap [data]="data"></lib-heatmap>
+      </div>
+    </div>
+    <aside>
+      <h2>Data example</h2>
+      <pre><code [highlight]="dataStr"></code></pre>
+    </aside>
+  </section>
+
+  <h2>Selector</h2>
+  <pre><code [highlight]="selector"></code></pre>
+</mat-card>
