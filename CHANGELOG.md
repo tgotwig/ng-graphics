@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- New component for plotting a Line-Chart
 - New component for plotting a Heatmap
 - New component for plotting a Pie-Chart
 

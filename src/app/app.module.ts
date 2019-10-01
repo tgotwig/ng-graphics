@@ -17,6 +17,7 @@ import { ScatterChartComponent } from './components/scatter-chart/scatter-chart.
 import { HistogramComponent } from './components/histogram/histogram.component';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { HeatmapComponent } from './components/heatmap/heatmap.component';
+import { LineChartComponent } from './components/line-chart/line-chart.component';
 
 const appRoutes: Routes = [
   { path: 'components', component: ComponentsComponent },
@@ -25,6 +26,7 @@ const appRoutes: Routes = [
   { path: 'components/histogram', component: HistogramComponent },
   { path: 'components/piechart', component: PieChartComponent },
   { path: 'components/heatmap', component: HeatmapComponent },
+  { path: 'components/linechart', component: LineChartComponent },
   { path: '', redirectTo: '/components', pathMatch: 'full'},
   { path: '**', component: ComponentsComponent }
 ];
@@ -44,7 +46,8 @@ export function hljsLanguages() {
     ScatterChartComponent,
     HistogramComponent,
     PieChartComponent,
-    HeatmapComponent
+    HeatmapComponent,
+    LineChartComponent
   ],
   imports: [
     BrowserModule,
