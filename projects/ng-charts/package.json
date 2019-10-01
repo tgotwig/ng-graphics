@@ -1,11 +1,11 @@
 {
-  "name": "@tgotwig/ng-charts",
-  "version": "0.1.3",
+  "name": "ng-graphics",
+  "version": "0.2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TGotwig/ng-charts.git"
+    "url": "git+https://github.com/TGotwig/ng-graphics.git"
   },
-  "homepage": "https://tgotwig.github.io/ng-charts",
+  "homepage": "https://tgotwig.github.io/ng-graphics",
   "peerDependencies": {
     "@angular/common": "^8.2.7",
     "@angular/core": "^8.2.7"

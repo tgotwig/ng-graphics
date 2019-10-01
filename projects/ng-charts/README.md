@@ -1,6 +1,6 @@
-# ng-charts
+# ng-graphics
 
-A d3-driven charts library for Angular applications 📊
+A d3-driven charting library for Angular applications 📊
 contributor friendly and idiomatic 🤗
 
 ## Getting Started
@@ -8,13 +8,13 @@ contributor friendly and idiomatic 🤗
 First Install this dependency:
 
 ```shell
-npm i @tgotwig/ng-charts
+npm i ng-graphics
 ```
 
 Then put the following line into your **app.module.ts** file and add that variable to your **imports** array:
 
 ```typescript
-import { NgChartsModule } from "@tgotwig/ng-charts";
+import { NgChartsModule } from "ng-graphics";
 ```
 
 Add the following to lines to your **angular.json**:

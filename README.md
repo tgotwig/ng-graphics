@@ -1,6 +1,6 @@
-# NgCharts &middot; [![npm](https://img.shields.io/npm/dw/@tgotwig/ng-charts?style=flat-square)](https://www.npmjs.com/package/@tgotwig/ng-charts) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/your/your-project/blob/master/LICENSE)
+# NgGraphics &middot; [![npm](https://img.shields.io/npm/dw/@tgotwig/ng-charts?style=flat-square)](https://www.npmjs.com/package/@tgotwig/ng-charts)
 
-A d3-driven charts library for Angular applications 📊
+A d3-driven charting library for Angular applications 📊
 contributor friendly and idiomatic 🤗
 
 ## Installing / Getting started
@@ -8,13 +8,13 @@ contributor friendly and idiomatic 🤗
 First Install this dependency:
 
 ```shell
-npm i @tgotwig/ng-charts
+npm i ng-graphics
 ```
 
 Then put the following line into your **app.module.ts** file and add that variable to your **imports** array:
 
 ```typescript
-import { NgChartsModule } from "@tgotwig/ng-charts";
+import { NgChartsModule } from "ng-graphics";
 ```
 
 Add the following to lines to your **angular.json**:
