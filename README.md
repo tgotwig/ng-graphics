@@ -1,4 +1,4 @@
-# NgGraphics &middot; [![npm](https://img.shields.io/npm/dw/@tgotwig/ng-charts?style=flat-square)](https://www.npmjs.com/package/@tgotwig/ng-charts)
+# NgGraphics &middot; [![npm](https://img.shields.io/npm/dw/ng-graphics?style=flat-square)](https://www.npmjs.com/package/ng-graphics)
 
 A d3-driven charting library for Angular applications 📊
 contributor friendly and idiomatic 🤗
