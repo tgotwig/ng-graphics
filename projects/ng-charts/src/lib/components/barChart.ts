@@ -11,14 +11,18 @@ export class NgBarChartComponent implements OnInit {
   d3: any;
   $: any;
   @Input() data: any;
+  @Input() xlabel: any;
+  @Input() ylabel: any;
 
   constructor() { }
 
   ngOnInit() {
     const data = this.data;
+    const xlabel = this.xlabel;
+    const ylabel = this.ylabel;
     const svg = d3.select('svg');
 
-    const margin = {top: 20, right: 20, bottom: 30, left: 40};
+    const margin = {top: 20, right: 20, bottom: 40, left: 50};
     const width = +document.querySelector('svg').clientWidth - margin.left - margin.right;
     const height = +document.querySelector('svg').clientHeight - margin.top - margin.bottom;
 
@@ -36,9 +40,28 @@ export class NgBarChartComponent implements OnInit {
       .attr('transform', 'translate(0,' + height + ')')
       .call(d3.axisBottom(x));
 
+    if (xlabel) {
+      g.append('text')
+        .attr('transform',
+              'translate(' + (width / 2) + ' ,' +
+                              (height + margin.top + 15) + ')')
+        .style('text-anchor', 'middle')
+        .text(xlabel);
+    }
+
     g.append('g')
       .attr('class', 'axis axis--y')
       .call(d3.axisLeft(y));
+
+    if (ylabel) {
+      g.append('text')
+        .attr('transform', 'rotate(-90)')
+        .attr('y', 0 - margin.left)
+        .attr('x', 0 - (height / 2))
+        .attr('dy', '1em')
+        .style('text-anchor', 'middle')
+        .text(ylabel);
+    }
 
     g.selectAll('.bar')
       .data(data)
