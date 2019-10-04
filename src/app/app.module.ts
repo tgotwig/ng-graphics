@@ -82,6 +82,10 @@ const appRoutes: Routes = [
       data: [
         { key: 'A', value: 30 },
         { key: 'B', value: 50 }
+      ],
+      properties: [
+        {name: 'xlabel', type: 'String', desc: 'Label which should be shown along the x-achses'},
+        {name: 'ylabel', type: 'String', desc: 'Label which should be shown along the y-achses'}
       ]
     }
   },
