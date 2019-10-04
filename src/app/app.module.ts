@@ -12,23 +12,88 @@ import json from 'highlight.js/lib/languages/typescript';
 
 import { MyNavComponent } from './components/my-nav/my-nav.component';
 import { ComponentsComponent } from './components/components/components.component';
-import { BarChartComponent } from './components/bar-chart/bar-chart.component';
-import { ScatterChartComponent } from './components/scatter-chart/scatter-chart.component';
-import { HistogramComponent } from './components/histogram/histogram.component';
-import { PieChartComponent } from './components/pie-chart/pie-chart.component';
-import { HeatmapComponent } from './components/heatmap/heatmap.component';
-import { LineChartComponent } from './components/line-chart/line-chart.component';
+import { ComponentComponent } from './components/component/component.component';
 
 const appRoutes: Routes = [
-  { path: 'components', component: ComponentsComponent },
-  { path: 'components/barchart', component: BarChartComponent },
-  { path: 'components/scatterchart', component: ScatterChartComponent },
-  { path: 'components/histogram', component: HistogramComponent },
-  { path: 'components/piechart', component: PieChartComponent },
-  { path: 'components/heatmap', component: HeatmapComponent },
-  { path: 'components/linechart', component: LineChartComponent },
-  { path: '', redirectTo: '/components', pathMatch: 'full'},
-  { path: '**', component: ComponentsComponent }
+  {
+    path: 'components',
+    component: ComponentsComponent
+  },
+  {
+    path: 'components/scatterchart',
+    component: ComponentComponent,
+    data: {
+      name: 'Scatterchart',
+      selector: 'lib-scatter-chart',
+      data: Array.from({length: 3}, () => ({x: Math.random(), y: Math.pow(Math.random(), 2)}))
+    }
+  },
+  {
+    path: 'components/histogram',
+    component: ComponentComponent,
+    data: {
+      name: 'Histogram',
+      selector: 'lib-histogram',
+      data: Array.from({length: 30}, () => Math.floor(Math.random() * 101))
+    }
+  },
+  {
+    path: 'components/piechart',
+    component: ComponentComponent,
+    data: {
+      name: 'Pie-Chart',
+      selector: 'lib-pie-chart',
+      data: [
+        {fruit: 'bananas', percentage: 20},
+        {fruit: 'apples', percentage: 45},
+        {fruit: 'carrots', percentage: 35}
+      ]
+    }
+  },
+  {
+    path: 'components/heatmap',
+    component: ComponentComponent,
+    data: {
+      name: 'Heatmap',
+      selector: 'lib-heatmap',
+      data: [
+        { group: 'A', key: 'v1', value: 30 },
+        { group: 'A', key: 'v2', value: 95 },
+        { group: 'B', key: 'v1', value: 37 },
+        { group: 'B', key: 'v2', value: 50 }
+      ]
+    }
+  },
+  {
+    path: 'components/linechart',
+    component: ComponentComponent,
+    data: {
+      name: 'Line-Chart',
+      selector: 'lib-line-chart',
+      data: Array.from({length: 5}, () => ({y: Math.random()}))
+    }
+  },
+  {
+    path: 'components/barchart',
+    component: ComponentComponent,
+    data: {
+      name: 'Bar-Chart',
+      selector: 'lib-bar-chart',
+      data: [
+        { key: 'A', value: 30 },
+        { key: 'B', value: 50 }
+      ]
+    }
+  },
+  {
+    path: '',
+    redirectTo: '/components',
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    component: ComponentsComponent
+  }
 ];
 
 export function hljsLanguages() {
@@ -42,12 +107,7 @@ export function hljsLanguages() {
     AppComponent,
     MyNavComponent,
     ComponentsComponent,
-    BarChartComponent,
-    ScatterChartComponent,
-    HistogramComponent,
-    PieChartComponent,
-    HeatmapComponent,
-    LineChartComponent
+    ComponentComponent
   ],
   imports: [
     BrowserModule,
