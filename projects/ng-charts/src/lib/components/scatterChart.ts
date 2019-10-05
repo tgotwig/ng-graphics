@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-declare const d3: any;
-declare const $: any;
+import { Component, OnInit, Input } from '@angular/core'
+declare const d3: any
+declare const $: any
 
 @Component({
   selector: 'lib-scatter-chart',
@@ -8,37 +8,37 @@ declare const $: any;
   styles: ['svg { width: 100%; height: 100%; }']
 })
 export class NgScatterChartComponent implements OnInit {
-  d3: any;
-  $: any;
-  @Input() data: any;
+  d3: any
+  $: any
+  @Input() data: any
 
   constructor() { }
 
   ngOnInit() {
-    const data = this.data;
-    const svg = d3.select('svg');
+    const data = this.data
+    const svg = d3.select('svg')
 
-    const margin = {top: 20, right: 20, bottom: 30, left: 40};
-    const width = +document.querySelector('svg').clientWidth - margin.left - margin.right;
-    const height = +document.querySelector('svg').clientHeight - margin.top - margin.bottom;
+    const margin = {top: 20, right: 20, bottom: 30, left: 40}
+    const width = +document.querySelector('svg').clientWidth - margin.left - margin.right
+    const height = +document.querySelector('svg').clientHeight - margin.top - margin.bottom
 
     const xScale = d3.scaleLinear()
       .domain([0, 1])
-      .range([margin.left, width - margin.right]);
+      .range([margin.left, width - margin.right])
 
     const yScale = d3.scaleLinear()
       .domain([0, 1])
-      .range([height - margin.bottom, margin.top]);
+      .range([height - margin.bottom, margin.top])
 
-    const xAxis = d3.axisBottom(xScale);
-    const yAxis = d3.axisLeft(yScale);
+    const xAxis = d3.axisBottom(xScale)
+    const yAxis = d3.axisLeft(yScale)
 
     svg.append('g')
         .attr('transform', `translate(0, ${height - margin.bottom})`)
-        .call(xAxis);
+        .call(xAxis)
     svg.append('g')
         .attr('transform', `translate(${margin.left}, 0)`)
-        .call(yAxis);
+        .call(yAxis)
 
     svg.append('g')
         .attr('stroke', '#000')
@@ -52,12 +52,12 @@ export class NgScatterChartComponent implements OnInit {
         .style('fill', 'steelblue')
         .style('opacity', '0.8')
         .on('mouseover mousemove', function(d: any) {
-          $(this).css('opacity', '1.0');
+          $(this).css('opacity', '1.0')
         })
         .on('mouseout', function(d: any) {
-          $(this).css('opacity', '0.8');
-        });
+          $(this).css('opacity', '0.8')
+        })
 
-    return svg.node();
+    return svg.node()
   }
 }

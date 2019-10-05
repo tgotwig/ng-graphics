@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core'
+import { Router, ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'app-component',
@@ -7,15 +7,15 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./component.component.scss']
 })
 export class ComponentComponent implements OnInit {
-  url = this.router.url;
-  name = this.route.snapshot.data.name;
-  selector = this.route.snapshot.data.selector;
-  data = this.route.snapshot.data.data;
-  dataStr = JSON.stringify(this.data, null, 2);
+  url = this.router.url
+  name = this.route.snapshot.data.name
+  selector = this.route.snapshot.data.selector
+  data = this.route.snapshot.data.data
+  dataStr = JSON.stringify(this.data, null, 2)
 
   // table
-  displayedColumns: string[] = ['name', 'type', 'desc'];
-  dataSource = this.route.snapshot.data.properties;
+  displayedColumns: string[] = ['name', 'type', 'desc']
+  dataSource = this.route.snapshot.data.properties
 
   constructor(
     private route: ActivatedRoute,

@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { NgBarChartComponent } from './components/barChart';
-import { NgScatterChartComponent } from './components/scatterChart';
-import { NgHistogramComponent } from './components/histogram';
-import { NgPieChartComponent } from './components/pieChart';
-import { NgHeatmapComponent } from './components/heatmap';
-import { NgLineChartComponent } from './components/lineChart';
+import { NgModule } from '@angular/core'
+import { NgBarChartComponent } from './components/barChart'
+import { NgScatterChartComponent } from './components/scatterChart'
+import { NgHistogramComponent } from './components/histogram'
+import { NgPieChartComponent } from './components/pieChart'
+import { NgHeatmapComponent } from './components/heatmap'
+import { NgLineChartComponent } from './components/lineChart'
 
 
 

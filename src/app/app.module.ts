@@ -1,18 +1,18 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core'
+import { BrowserModule } from '@angular/platform-browser'
+import { RouterModule, Routes } from '@angular/router'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
-import { AppComponent } from './app.component';
-import { NgChartsModule } from 'ng-charts';
-import material from './app.material';
+import { AppComponent } from './app.component'
+import { NgChartsModule } from 'ng-charts'
+import material from './app.material'
 
-import { HighlightModule } from 'ngx-highlightjs';
-import json from 'highlight.js/lib/languages/typescript';
+import { HighlightModule } from 'ngx-highlightjs'
+import json from 'highlight.js/lib/languages/typescript'
 
-import { MyNavComponent } from './components/my-nav/my-nav.component';
-import { ComponentsComponent } from './components/components/components.component';
-import { ComponentComponent } from './components/component/component.component';
+import { MyNavComponent } from './components/my-nav/my-nav.component'
+import { ComponentsComponent } from './components/components/components.component'
+import { ComponentComponent } from './components/component/component.component'
 
 const appRoutes: Routes = [
   {
@@ -98,12 +98,12 @@ const appRoutes: Routes = [
     path: '**',
     component: ComponentsComponent
   }
-];
+]
 
 export function hljsLanguages() {
   return [
     {name: 'json', func: json}
-  ];
+  ]
 }
 
 @NgModule({
