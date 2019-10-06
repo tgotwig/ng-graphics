@@ -84,6 +84,7 @@ const appRoutes: Routes = [
         { key: 'B', value: 50 }
       ],
       properties: [
+        {name: 'title', type: 'String', desc: 'Title of the plot'},
         {name: 'xlabel', type: 'String', desc: 'Label which should be shown along the x-achses'},
         {name: 'ylabel', type: 'String', desc: 'Label which should be shown along the y-achses'}
       ]

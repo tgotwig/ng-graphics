@@ -11,6 +11,7 @@ export class NgBarChartComponent implements OnInit {
   d3: any
   $: any
   @Input() data: any
+  @Input() title: any
   @Input() xlabel: any
   @Input() ylabel: any
 
@@ -18,11 +19,12 @@ export class NgBarChartComponent implements OnInit {
 
   ngOnInit() {
     const data = this.data
+    const title = this.title
     const xlabel = this.xlabel
     const ylabel = this.ylabel
     const svg = d3.select('svg')
 
-    const margin = {top: 20, right: 20, bottom: 40, left: 50}
+    const margin = {top: 40, right: 20, bottom: 50, left: 50}
     const width = +document.querySelector('svg').clientWidth - margin.left - margin.right
     const height = +document.querySelector('svg').clientHeight - margin.top - margin.bottom
 
@@ -44,7 +46,7 @@ export class NgBarChartComponent implements OnInit {
       g.append('text')
         .attr('transform',
               'translate(' + (width / 2) + ' ,' +
-                              (height + margin.top + 15) + ')')
+                              (height + margin.top) + ')')
         .style('text-anchor', 'middle')
         .text(xlabel)
     }
@@ -81,6 +83,14 @@ export class NgBarChartComponent implements OnInit {
         .on('mouseout', function(d: any) {
           $(this).css('opacity', '0.8')
         })
+
+    if (title) {
+      g.append('text')
+        .attr('x', (width / 2))
+        .attr('y', 0 - (margin.top / 2))
+        .attr('text-anchor', 'middle')
+        .text(title)
+    }
 
     return svg.node()
   }
