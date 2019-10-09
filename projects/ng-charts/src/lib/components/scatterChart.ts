@@ -11,16 +11,24 @@ export class NgScatterChartComponent implements OnInit {
   d3: any
   $: any
   @Input() data: any
+  @Input() title: any
 
   constructor() { }
 
   ngOnInit() {
     const data = this.data
     const svg = d3.select('svg')
+    const title = this.title
 
-    const margin = {top: 20, right: 20, bottom: 30, left: 40}
+    const margin = {top: 25, right: 10, bottom: 10, left: 20}
     const width = +document.querySelector('svg').clientWidth - margin.left - margin.right
     const height = +document.querySelector('svg').clientHeight - margin.top - margin.bottom
+
+    svg.attr('width', width + margin.left + margin.right)
+      .attr('height', height + margin.top + margin.bottom)
+
+    const g = svg.append('g')
+      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
     const xScale = d3.scaleLinear()
       .domain([0, 1])
@@ -30,19 +38,16 @@ export class NgScatterChartComponent implements OnInit {
       .domain([0, 1])
       .range([height - margin.bottom, margin.top])
 
-    const xAxis = d3.axisBottom(xScale)
-    const yAxis = d3.axisLeft(yScale)
+    g.append('g')
+      .attr('transform', `translate(0, ${height - margin.bottom})`)
+      .call(d3.axisBottom(xScale))
+    g.append('g')
+      .attr('transform', `translate(${margin.left}, 0)`)
+      .call(d3.axisLeft(yScale))
 
-    svg.append('g')
-        .attr('transform', `translate(0, ${height - margin.bottom})`)
-        .call(xAxis)
-    svg.append('g')
-        .attr('transform', `translate(${margin.left}, 0)`)
-        .call(yAxis)
-
-    svg.append('g')
-        .attr('stroke', '#000')
-        .attr('stroke-opacity', 0.2)
+    g.append('g')
+      .attr('stroke', '#000')
+      .attr('stroke-opacity', 0.2)
       .selectAll('circle')
       .data(data)
       .enter().append('circle')
@@ -57,6 +62,14 @@ export class NgScatterChartComponent implements OnInit {
         .on('mouseout', function(d: any) {
           $(this).css('opacity', '0.8')
         })
+
+    if (title) {
+      g.append('text')
+        .attr('x', (width / 2))
+        .attr('y', 0 - (margin.top / 2))
+        .attr('text-anchor', 'middle')
+        .text(title)
+    }
 
     return svg.node()
   }

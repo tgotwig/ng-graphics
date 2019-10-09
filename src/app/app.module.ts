@@ -25,7 +25,10 @@ const appRoutes: Routes = [
     data: {
       name: 'Scatterchart',
       selector: 'lib-scatter-chart',
-      data: Array.from({length: 3}, () => ({x: Math.random(), y: Math.pow(Math.random(), 2)}))
+      data: Array.from({length: 3}, () => ({x: Math.random(), y: Math.pow(Math.random(), 2)})),
+      properties: [
+        {name: 'title', type: 'String', desc: 'Title of the plot'},
+      ]
     }
   },
   {

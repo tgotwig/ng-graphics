@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add property `title` to Heatmap
 - Add property `title` to Histogram
 - Add property `title` to Line-Chart
+- Add property `title` to Scatter-Chart
 
 ## [0.2.2] - 2019-10-06
 
