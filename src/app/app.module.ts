@@ -61,6 +61,9 @@ const appRoutes: Routes = [
         { group: 'A', key: 'v2', value: 95 },
         { group: 'B', key: 'v1', value: 37 },
         { group: 'B', key: 'v2', value: 50 }
+      ],
+      properties: [
+        {name: 'title', type: 'String', desc: 'Title of the plot'},
       ]
     }
   },
