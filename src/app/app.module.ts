@@ -53,6 +53,9 @@ const appRoutes: Routes = [
         {fruit: 'bananas', percentage: 20},
         {fruit: 'apples', percentage: 45},
         {fruit: 'carrots', percentage: 35}
+      ],
+      properties: [
+        {name: 'title', type: 'String', desc: 'Title of the plot'},
       ]
     }
   },
