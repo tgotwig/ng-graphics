@@ -34,8 +34,11 @@ const appRoutes: Routes = [
     data: {
       name: 'Histogram',
       selector: 'lib-histogram',
-      data: Array.from({length: 30}, () => Math.floor(Math.random() * 101))
-    }
+      data: Array.from({length: 30}, () => Math.floor(Math.random() * 101)),
+      properties: [
+        {name: 'title', type: 'String', desc: 'Title of the plot'},
+      ]
+    },
   },
   {
     path: 'components/piechart',
