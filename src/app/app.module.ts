@@ -76,7 +76,10 @@ const appRoutes: Routes = [
     data: {
       name: 'Line-Chart',
       selector: 'lib-line-chart',
-      data: Array.from({length: 5}, () => ({y: Math.random()}))
+      data: Array.from({length: 5}, () => ({y: Math.random()})),
+      properties: [
+        {name: 'title', type: 'String', desc: 'Title of the plot'},
+      ]
     }
   },
   {

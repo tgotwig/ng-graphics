@@ -12,14 +12,16 @@ export class NgLineChartComponent implements OnInit {
   d3: any
   $: any
   @Input() data: any
+  @Input() title: any
 
   constructor() { }
 
   ngOnInit() {
     const data = this.data
     const svg = d3.select('svg')
+    const title = this.title
 
-    const margin = {top: 20, right: 20, bottom: 30, left: 40}
+    const margin = {top: 40, right: 20, bottom: 30, left: 40}
     const width = +document.querySelector('svg').clientWidth - margin.left - margin.right
     const height = +document.querySelector('svg').clientHeight - margin.top - margin.bottom
 
@@ -75,6 +77,14 @@ export class NgLineChartComponent implements OnInit {
         .on('mouseout', function(d: any) {
           $(this).css('opacity', '0.8')
         })
+
+    if (title) {
+      g.append('text')
+        .attr('x', (width / 2))
+        .attr('y', 0 - (margin.top / 2))
+        .attr('text-anchor', 'middle')
+        .text(title)
+    }
 
     return svg.node()
   }
