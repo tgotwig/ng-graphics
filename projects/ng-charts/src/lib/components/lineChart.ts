@@ -13,6 +13,8 @@ export class NgLineChartComponent implements OnInit {
   $: any
   @Input() data: any
   @Input() title: any
+  @Input() xlabel: any
+  @Input() ylabel: any
 
   constructor() { }
 
@@ -20,8 +22,10 @@ export class NgLineChartComponent implements OnInit {
     const data = this.data
     const svg = d3.select('svg')
     const title = this.title
+    const xlabel = this.xlabel
+    const ylabel = this.ylabel
 
-    const margin = {top: 40, right: 20, bottom: 30, left: 40}
+    const margin = {top: 40, right: 20, bottom: 50, left: 50}
     const width = +document.querySelector('svg').clientWidth - margin.left - margin.right
     const height = +document.querySelector('svg').clientHeight - margin.top - margin.bottom
 
@@ -49,9 +53,28 @@ export class NgLineChartComponent implements OnInit {
       .attr('transform', 'translate(0,' + height + ')')
       .call(d3.axisBottom(xScale))
 
+    if (xlabel) {
+      g.append('text')
+        .attr('transform',
+              'translate(' + (width / 2) + ' ,' +
+                              (height + margin.top) + ')')
+        .style('text-anchor', 'middle')
+        .text(xlabel)
+    }
+
     g.append('g')
       .attr('class', 'y axis')
       .call(d3.axisLeft(yScale))
+
+    if (ylabel) {
+      g.append('text')
+        .attr('transform', 'rotate(-90)')
+        .attr('y', 0 - margin.left)
+        .attr('x', 0 - (height / 2))
+        .attr('dy', '1em')
+        .style('text-anchor', 'middle')
+        .text(ylabel)
+    }
 
     g.append('path')
       .datum(data)
