@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core'
-declare const d3: any
-declare const $: any
+declare const d3
+declare const $
 
 @Component({
   selector: 'lib-bar-chart',
@@ -8,12 +8,12 @@ declare const $: any
   styles: ['svg { width: 100%; height: 100%; }']
 })
 export class NgBarChartComponent implements OnInit {
-  d3: any
-  $: any
-  @Input() data: any
-  @Input() title: any
-  @Input() xlabel: any
-  @Input() ylabel: any
+  d3
+  $
+  @Input() data
+  @Input() title
+  @Input() xlabel
+  @Input() ylabel
 
   constructor() { }
 
@@ -34,8 +34,8 @@ export class NgBarChartComponent implements OnInit {
     const g = svg.append('g')
       .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
-    x.domain(data.map( (d: any) => d.key))
-    y.domain([0, d3.max(data, (d: any) => d.value)])
+    x.domain(data.map( (d) => d.key))
+    y.domain([0, d3.max(data, (d) => d.value)])
 
     g.append('g')
       .attr('class', 'axis axis--x')
@@ -70,17 +70,17 @@ export class NgBarChartComponent implements OnInit {
       .enter()
       .append('rect')
         .attr('class', 'bar')
-        .attr('x', (d: any) => x(d.key))
-        .attr('y', (d: any) => y(d.value))
+        .attr('x', (d) => x(d.key))
+        .attr('y', (d) => y(d.value))
         .attr('width', x.bandwidth())
-        .attr('height', (d: any) => height - y(d.value))
-        .attr('title', (d: any) => d.value)
+        .attr('height', (d) => height - y(d.value))
+        .attr('title', (d) => d.value)
         .style('fill', 'steelblue')
         .style('opacity', '0.8')
-        .on('mouseover mousemove', function(d: any) {
+        .on('mouseover mousemove', function(d) {
           $(this).css('opacity', '1.0')
         })
-        .on('mouseout', function(d: any) {
+        .on('mouseout', function(d) {
           $(this).css('opacity', '0.8')
         })
 

@@ -1,7 +1,7 @@
 
 import { Component, OnInit, Input } from '@angular/core'
-declare const d3: any
-declare const $: any
+declare const d3
+declare const $
 
 @Component({
   selector: 'lib-line-chart',
@@ -9,12 +9,12 @@ declare const $: any
   styles: ['svg { width: 100%; height: 100%; }']
 })
 export class NgLineChartComponent implements OnInit {
-  d3: any
-  $: any
-  @Input() data: any
-  @Input() title: any
-  @Input() xlabel: any
-  @Input() ylabel: any
+  d3
+  $
+  @Input() data
+  @Input() title
+  @Input() xlabel
+  @Input() ylabel
 
   constructor() { }
 
@@ -38,8 +38,8 @@ export class NgLineChartComponent implements OnInit {
       .range([height, 0])
 
     const line = d3.line()
-      .x((d: any, i: any) => xScale(i))
-      .y((d: any) => yScale(d.y))
+      .x((d, i) => xScale(i))
+      .y((d) => yScale(d.y))
       .curve(d3.curveMonotoneX)
 
     svg.attr('width', width + margin.left + margin.right)
@@ -88,16 +88,16 @@ export class NgLineChartComponent implements OnInit {
       .data(data)
       .enter().append('circle')
         .attr('class', 'dot')
-        .attr('cx', (d: any, i: any) => xScale(i))
-        .attr('cy', (d: any) => yScale(d.y))
+        .attr('cx', (d, i) => xScale(i))
+        .attr('cy', (d) => yScale(d.y))
         .attr('r', 5)
         .style('fill', '#ffab00')
         .style('stroke', '#fff')
         .style('opacity', '0.8')
-        .on('mouseover mousemove', function(d: any) {
+        .on('mouseover mousemove', function(d) {
           $(this).css('opacity', '1.0')
         })
-        .on('mouseout', function(d: any) {
+        .on('mouseout', function(d) {
           $(this).css('opacity', '0.8')
         })
 

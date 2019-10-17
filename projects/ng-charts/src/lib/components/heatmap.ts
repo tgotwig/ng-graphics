@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core'
-declare const d3: any
-declare const $: any
+declare const d3
+declare const $
 
 @Component({
   selector: 'lib-heatmap',
@@ -8,10 +8,10 @@ declare const $: any
   styles: ['svg { width: 100%; height: 100%; }']
 })
 export class NgHeatmapComponent implements OnInit {
-  d3: any
-  $: any
-  @Input() data: any
-  @Input() title: any
+  d3
+  $
+  @Input() data
+  @Input() title
 
   constructor() { }
 
@@ -57,16 +57,16 @@ export class NgHeatmapComponent implements OnInit {
       .data(data, function(d) { return d.group + ':' + d.key })
       .enter()
       .append('rect')
-        .attr('x', (d: any) => x(d.group))
-        .attr('y', (d: any) => y(d.key))
+        .attr('x', (d) => x(d.group))
+        .attr('y', (d) => y(d.key))
         .attr('width', x.bandwidth() )
         .attr('height', y.bandwidth() )
-        .style('fill', (d: any) => myColor(d.value))
+        .style('fill', (d) => myColor(d.value))
         .style('opacity', '0.8')
-        .on('mouseover mousemove', function(d: any) {
+        .on('mouseover mousemove', function(d) {
           $(this).css('opacity', '1.0')
         })
-        .on('mouseout', function(d: any) {
+        .on('mouseout', function(d) {
           $(this).css('opacity', '0.8')
         })
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core'
-declare const d3: any
-declare const $: any
+declare const d3
+declare const $
 
 @Component({
   selector: 'lib-histogram',
@@ -8,10 +8,10 @@ declare const $: any
   styles: ['svg { width: 100%; height: 100%; }']
 })
 export class NgHistogramComponent implements OnInit {
-  d3: any
-  $: any
-  @Input() data: any
-  @Input() title: any
+  d3
+  $
+  @Input() data
+  @Input() title
 
   constructor() { }
 
@@ -68,10 +68,10 @@ export class NgHistogramComponent implements OnInit {
       .attr('height', d => y(0) - y(d.length))
       .style('fill', 'steelblue')
       .style('opacity', '0.8')
-      .on('mouseover mousemove', function(d: any) {
+      .on('mouseover mousemove', function(d) {
         $(this).css('opacity', '1.0')
       })
-      .on('mouseout', function(d: any) {
+      .on('mouseout', function(d) {
         $(this).css('opacity', '0.8')
       })
 
