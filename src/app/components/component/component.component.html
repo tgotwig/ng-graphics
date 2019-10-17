@@ -7,16 +7,16 @@
           *ngSwitchCase="'/components/barchart'"
           [data]="data"
           title="Title"
-          ylabel="Values"
           xlabel="Keys"
+          ylabel="Values"
         ></lib-bar-chart>
 
         <lib-line-chart
           *ngSwitchCase="'/components/linechart'"
           [data]="data"
           title="Title"
-          ylabel="Values"
           xlabel="Keys"
+          ylabel="Values"
         ></lib-line-chart>
 
         <lib-heatmap
@@ -35,6 +35,8 @@
           *ngSwitchCase="'/components/histogram'"
           [data]="data"
           title="Title"
+          xlabel="Keys"
+          ylabel="Values"
         ></lib-histogram>
 
         <lib-scatter-chart
