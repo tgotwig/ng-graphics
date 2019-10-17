@@ -12,6 +12,8 @@ export class NgScatterChartComponent implements OnInit {
   $
   @Input() data
   @Input() title
+  @Input() xlabel
+  @Input() ylabel
 
   constructor() { }
 
@@ -19,8 +21,10 @@ export class NgScatterChartComponent implements OnInit {
     const data = this.data
     const svg = d3.select('svg')
     const title = this.title
+    const xlabel = this.xlabel
+    const ylabel = this.ylabel
 
-    const margin = {top: 25, right: 10, bottom: 10, left: 20}
+    const margin = {top: 25, right: 10, bottom: 30, left: 30}
     const width = +document.querySelector('svg').clientWidth - margin.left - margin.right
     const height = +document.querySelector('svg').clientHeight - margin.top - margin.bottom
 
@@ -41,9 +45,29 @@ export class NgScatterChartComponent implements OnInit {
     g.append('g')
       .attr('transform', `translate(0, ${height - margin.bottom})`)
       .call(d3.axisBottom(xScale))
+
+    if (xlabel) {
+      g.append('text')
+        .attr('transform',
+              'translate(' + (width / 2) + ' ,' +
+                              (height + margin.top) + ')')
+        .style('text-anchor', 'middle')
+        .text(xlabel)
+    }
+
     g.append('g')
       .attr('transform', `translate(${margin.left}, 0)`)
       .call(d3.axisLeft(yScale))
+
+    if (ylabel) {
+      g.append('text')
+        .attr('transform', 'rotate(-90)')
+        .attr('y', 0 - margin.left)
+        .attr('x', 0 - (height / 2))
+        .attr('dy', '1em')
+        .style('text-anchor', 'middle')
+        .text(ylabel)
+    }
 
     g.append('g')
       .attr('stroke', '#000')

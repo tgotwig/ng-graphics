@@ -28,6 +28,8 @@ const appRoutes: Routes = [
       data: Array.from({length: 3}, () => ({x: Math.random(), y: Math.pow(Math.random(), 2)})),
       properties: [
         {name: 'title', type: 'String', desc: 'Title of the plot'},
+        {name: 'xlabel', type: 'String', desc: 'Label which should be shown along the x-achses'},
+        {name: 'ylabel', type: 'String', desc: 'Label which should be shown along the y-achses'}
       ]
     }
   },
