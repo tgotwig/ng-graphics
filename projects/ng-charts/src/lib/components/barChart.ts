@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core'
 declare const d3
 declare const $
+declare const tippy
 
 @Component({
   selector: 'lib-bar-chart',
@@ -10,6 +11,7 @@ declare const $
 export class NgBarChartComponent implements OnInit {
   d3
   $
+  tippy
   @Input() data
   @Input() title
   @Input() xlabel
@@ -74,7 +76,12 @@ export class NgBarChartComponent implements OnInit {
         .attr('y', (d) => y(d.value))
         .attr('width', x.bandwidth())
         .attr('height', (d) => height - y(d.value))
-        .attr('title', (d) => d.value)
+        .attr('title', (d) => `
+          <div style="text-align: left;">
+            Key: <b>${d.key}</b><br>
+            Value: <b>${d.value}</b>
+          </div>
+        `)
         .style('fill', 'steelblue')
         .style('opacity', '0.8')
         .on('mouseover mousemove', function(d) {
@@ -93,5 +100,15 @@ export class NgBarChartComponent implements OnInit {
     }
 
     return svg.node()
+  }
+
+  ngAfterViewInit() {
+    tippy('[title]', {
+      content(reference) {
+        const title = reference.getAttribute('title');
+        reference.removeAttribute('title');
+        return title;
+      },
+    });
   }
 }
