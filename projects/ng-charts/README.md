@@ -21,7 +21,9 @@ Add the following to lines to your **angular.json**:
 
 ```text
 "node_modules/d3/dist/d3.min.js",
-"node_modules/jquery/dist/jquery.min.js"
+"node_modules/jquery/dist/jquery.min.js",
+"node_modules/popper.js/dist/umd/popper.min.js",
+"node_modules/tippy.js/umd/index.all.min.js"
 ```
 
 If for instance you want a bar-chart, add this to your html:
