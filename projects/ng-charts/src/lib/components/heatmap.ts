@@ -1,15 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core'
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core'
 declare const d3
 declare const $
+declare const tippy
 
 @Component({
   selector: 'lib-heatmap',
   template: `<svg />`,
   styles: ['svg { width: 100%; height: 100%; }']
 })
-export class NgHeatmapComponent implements OnInit {
+export class NgHeatmapComponent implements OnInit, AfterViewInit {
   d3
   $
+  tippy
   @Input() data
   @Input() title
 
@@ -61,6 +63,13 @@ export class NgHeatmapComponent implements OnInit {
         .attr('y', (d) => y(d.key))
         .attr('width', x.bandwidth() )
         .attr('height', y.bandwidth() )
+        .attr('title', (d) => `
+          <div style="text-align: left;">
+            Group: <b>${d.group}</b><br>
+            Key: <b>${d.key}</b><br>
+            Value: <b>${d.value}</b>
+          </div>
+        `)
         .style('fill', (d) => myColor(d.value))
         .style('opacity', '0.8')
         .on('mouseover mousemove', function(d) {
@@ -79,5 +88,15 @@ export class NgHeatmapComponent implements OnInit {
     }
 
     return svg.node()
+  }
+
+  ngAfterViewInit() {
+    tippy('[title]', {
+      content(reference) {
+        const title = reference.getAttribute('title');
+        reference.removeAttribute('title');
+        return title;
+      },
+    });
   }
 }
