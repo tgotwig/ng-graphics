@@ -25,7 +25,7 @@ const appRoutes: Routes = [
     data: {
       name: 'Scatterchart',
       selector: 'lib-scatter-chart',
-      data: Array.from({length: 3}, () => ({x: Math.random(), y: Math.pow(Math.random(), 2)})),
+      data: Array.from({length: 3}, () => ({key: Math.random(), value: Math.pow(Math.random(), 2)})),
       properties: [
         {name: 'title', type: 'String', desc: 'Title of the plot'},
         {name: 'xlabel', type: 'String', desc: 'Label which should be shown along the x-achses'},
@@ -86,7 +86,7 @@ const appRoutes: Routes = [
     data: {
       name: 'Line-Chart',
       selector: 'lib-line-chart',
-      data: Array.from({length: 5}, () => ({y: Math.random()})),
+      data: Array.from({length: 5}, (x, i) => ({key: i, value: Math.random()})),
       properties: [
         {name: 'title', type: 'String', desc: 'Title of the plot'},
         {name: 'xlabel', type: 'String', desc: 'Label which should be shown along the x-achses'},

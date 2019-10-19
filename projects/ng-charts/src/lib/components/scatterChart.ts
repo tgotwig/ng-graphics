@@ -77,13 +77,13 @@ export class NgScatterChartComponent implements OnInit, AfterViewInit {
       .selectAll('circle')
       .data(data)
       .enter().append('circle')
-        .attr('cx', (d) => xScale(d.x))
-        .attr('cy', (d) => yScale(d.y))
+        .attr('cx', (d) => xScale(d.key))
+        .attr('cy', (d) => yScale(d.value))
         .attr('r', 2.5)
         .attr('title', (d) => `
           <div style="text-align: left;">
-            Key: <b>${d.x.toFixed(3)}</b><br>
-            Value: <b>${d.y.toFixed(3)}</b>
+            Key: <b>${d.key.toFixed(3)}</b><br>
+            Value: <b>${d.value.toFixed(3)}</b>
           </div>
         `)
         .style('fill', 'steelblue')

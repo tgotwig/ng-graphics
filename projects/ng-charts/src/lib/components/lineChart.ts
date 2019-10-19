@@ -32,17 +32,22 @@ export class NgLineChartComponent implements OnInit, AfterViewInit {
     const width = +document.querySelector('svg').clientWidth - margin.left - margin.right
     const height = +document.querySelector('svg').clientHeight - margin.top - margin.bottom
 
+    const keyMin = Math.min.apply(Math, data.map((d) => d.key))
+    const keyMax = Math.max.apply(Math, data.map((d) => d.key))
+    const valueMin = Math.min.apply(Math, data.map((d) => d.value))
+    const valueMax = Math.max.apply(Math, data.map((d) => d.value))
+
     const xScale = d3.scaleLinear()
-      .domain([0, data.length - 1])
+      .domain([keyMin, keyMax])
       .range([0, width])
 
     const yScale = d3.scaleLinear()
-      .domain([0, 1])
+      .domain([valueMin, valueMax])
       .range([height, 0])
 
     const line = d3.line()
-      .x((d, i) => xScale(i))
-      .y((d) => yScale(d.y))
+      .x((d) => xScale(d.key))
+      .y((d) => yScale(d.value))
       .curve(d3.curveMonotoneX)
 
     svg.attr('width', width + margin.left + margin.right)
@@ -91,12 +96,13 @@ export class NgLineChartComponent implements OnInit, AfterViewInit {
       .data(data)
       .enter().append('circle')
         .attr('class', 'dot')
-        .attr('cx', (d, i) => xScale(i))
-        .attr('cy', (d) => yScale(d.y))
+        .attr('cx', (d, i) => xScale(d.key))
+        .attr('cy', (d) => yScale(d.value))
         .attr('r', 5)
         .attr('title', (d) => `
           <div style="text-align: left;">
-            Value: <b>${d.y.toFixed(3)}</b>
+            Key: <b>${d.key.toFixed(3)}</b><br>
+            Value: <b>${d.value.toFixed(3)}</b>
           </div>
         `)
         .style('fill', '#ffab00')
