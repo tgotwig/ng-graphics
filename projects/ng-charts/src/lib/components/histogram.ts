@@ -1,15 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core'
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core'
 declare const d3
 declare const $
+declare const tippy
 
 @Component({
   selector: 'lib-histogram',
   template: `<svg />`,
   styles: ['svg { width: 100%; height: 100%; }']
 })
-export class NgHistogramComponent implements OnInit {
+export class NgHistogramComponent implements OnInit, AfterViewInit {
   d3
   $
+  tippy
   @Input() data
   @Input() title
   @Input() xlabel
@@ -89,6 +91,11 @@ export class NgHistogramComponent implements OnInit {
       .attr('fill-opacity', 1)
       .attr('y', d => y(d.length))
       .attr('height', d => y(0) - y(d.length))
+      .attr('title', (d) => `
+        <div style="text-align: left;">
+          Value: <b>${d.length}</b>
+        </div>
+      `)
       .style('fill', 'steelblue')
       .style('opacity', '0.8')
       .on('mouseover mousemove', function(d) {
@@ -110,5 +117,15 @@ export class NgHistogramComponent implements OnInit {
     }
 
     return svg.node()
+  }
+
+  ngAfterViewInit() {
+    tippy('[title]', {
+      content(reference) {
+        const title = reference.getAttribute('title');
+        reference.removeAttribute('title');
+        return title;
+      },
+    });
   }
 }
