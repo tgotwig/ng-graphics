@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add tooltips by Tippy.js
+- Add tooltips for Bar-Chart
 
 ## [0.2.3] - 2019-10-17
 

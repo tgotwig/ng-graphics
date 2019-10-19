@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core'
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core'
 declare const d3
 declare const $
 declare const tippy
@@ -8,7 +8,7 @@ declare const tippy
   template: `<svg />`,
   styles: ['svg { width: 100%; height: 100%; }']
 })
-export class NgBarChartComponent implements OnInit {
+export class NgBarChartComponent implements OnInit, AfterViewInit {
   d3
   $
   tippy
