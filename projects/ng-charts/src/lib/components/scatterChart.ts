@@ -1,15 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core'
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core'
 declare const d3
 declare const $
+declare const tippy
 
 @Component({
   selector: 'lib-scatter-chart',
   template: `<svg />`,
   styles: ['svg { width: 100%; height: 100%; }']
 })
-export class NgScatterChartComponent implements OnInit {
+export class NgScatterChartComponent implements OnInit, AfterViewInit {
   d3
   $
+  tippy
   @Input() data
   @Input() title
   @Input() xlabel
@@ -78,6 +80,12 @@ export class NgScatterChartComponent implements OnInit {
         .attr('cx', (d) => xScale(d.x))
         .attr('cy', (d) => yScale(d.y))
         .attr('r', 2.5)
+        .attr('title', (d) => `
+          <div style="text-align: left;">
+            Key: <b>${d.x.toFixed(3)}</b><br>
+            Value: <b>${d.y.toFixed(3)}</b>
+          </div>
+        `)
         .style('fill', 'steelblue')
         .style('opacity', '0.8')
         .on('mouseover mousemove', function(d) {
@@ -96,5 +104,15 @@ export class NgScatterChartComponent implements OnInit {
     }
 
     return svg.node()
+  }
+
+  ngAfterViewInit() {
+    tippy('[title]', {
+      content(reference) {
+        const title = reference.getAttribute('title');
+        reference.removeAttribute('title');
+        return title;
+      },
+    });
   }
 }

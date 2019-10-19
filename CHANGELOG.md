@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add tooltips for Heatmap
 - Add tooltips for Pie-Chart
 - Add tooltips for Histogram
+- Add tooltips for Scatter-Chart
 
 ## [0.2.3] - 2019-10-17
 
