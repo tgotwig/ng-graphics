@@ -54,9 +54,9 @@ const appRoutes: Routes = [
       name: 'Pie-Chart',
       selector: 'lib-pie-chart',
       data: [
-        {fruit: 'bananas', percentage: 20},
-        {fruit: 'apples', percentage: 45},
-        {fruit: 'carrots', percentage: 35}
+        {key: 'bananas', value: 20},
+        {key: 'apples', value: 45},
+        {key: 'carrots', value: 35}
       ],
       properties: [
         {name: 'title', type: 'String', desc: 'Title of the plot'},

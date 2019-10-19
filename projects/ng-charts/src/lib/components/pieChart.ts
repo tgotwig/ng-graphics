@@ -34,7 +34,7 @@ export class NgPieChartComponent implements OnInit, AfterViewInit {
 
     const color = d3.scaleOrdinal(d3.schemePaired)
 
-    const pie = d3.pie().value((d) => d.percentage)
+    const pie = d3.pie().value((d) => d.value)
 
     const path = d3.arc()
       .outerRadius(width / 2 - margin)
@@ -47,11 +47,11 @@ export class NgPieChartComponent implements OnInit, AfterViewInit {
 
     arc.append('path')
       .attr('d', path)
-      .attr('fill', (d) => color(d.data.percentage))
+      .attr('fill', (d) => color(d.data.value))
       .attr('title', (d) => `
         <div style="text-align: left;">
-          fruit: <b>${d.data.fruit}</b><br>
-          percentage: <b>${d.data.percentage}</b>
+          key: <b>${d.data.key}</b><br>
+          value: <b>${d.data.value}</b>
         </div>
       `)
       .style('opacity', '0.8')
