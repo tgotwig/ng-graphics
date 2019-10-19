@@ -1,16 +1,19 @@
 
-import { Component, OnInit, Input } from '@angular/core'
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core'
 declare const d3
 declare const $
+declare const tippy
+
 
 @Component({
   selector: 'lib-line-chart',
   template: `<svg />`,
   styles: ['svg { width: 100%; height: 100%; }']
 })
-export class NgLineChartComponent implements OnInit {
+export class NgLineChartComponent implements OnInit, AfterViewInit {
   d3
   $
+  tippy
   @Input() data
   @Input() title
   @Input() xlabel
@@ -91,6 +94,11 @@ export class NgLineChartComponent implements OnInit {
         .attr('cx', (d, i) => xScale(i))
         .attr('cy', (d) => yScale(d.y))
         .attr('r', 5)
+        .attr('title', (d) => `
+          <div style="text-align: left;">
+            Value: <b>${d.y.toFixed(3)}</b>
+          </div>
+        `)
         .style('fill', '#ffab00')
         .style('stroke', '#fff')
         .style('opacity', '0.8')
@@ -110,5 +118,15 @@ export class NgLineChartComponent implements OnInit {
     }
 
     return svg.node()
+  }
+
+  ngAfterViewInit() {
+    tippy('[title]', {
+      content(reference) {
+        const title = reference.getAttribute('title');
+        reference.removeAttribute('title');
+        return title;
+      },
+    });
   }
 }
