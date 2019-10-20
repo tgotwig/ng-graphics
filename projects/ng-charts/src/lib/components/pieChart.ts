@@ -69,8 +69,6 @@ export class NgPieChartComponent implements OnInit, AfterViewInit {
         .attr('text-anchor', 'middle')
         .text(title)
     }
-
-    return svg.node()
   }
 
   ngAfterViewInit() {
