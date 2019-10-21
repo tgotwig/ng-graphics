@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core'
+import { Component, OnInit, AfterViewInit, Input } from '@angular/core'
 declare const d3
 declare const $
 declare const tippy
