@@ -28,21 +28,25 @@ export class NgLineChartComponent implements OnInit, AfterViewInit {
     const xlabel = this.xlabel
     const ylabel = this.ylabel
 
-    const margin = {top: 40, right: 20, bottom: 50, left: 50}
+    const margin = {top: 40, right: 20, bottom: 50, left: 60}
     const width = +document.querySelector('svg').clientWidth - margin.left - margin.right
     const height = +document.querySelector('svg').clientHeight - margin.top - margin.bottom
 
-    const keyMin = Math.min.apply(Math, data.map((d) => d.key))
-    const keyMax = Math.max.apply(Math, data.map((d) => d.key))
-    const valueMin = Math.min.apply(Math, data.map((d) => d.value))
-    const valueMax = Math.max.apply(Math, data.map((d) => d.value))
+    const g = svg.append('g')
+      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
     const xScale = d3.scaleLinear()
-      .domain([keyMin, keyMax])
+      .domain([
+        Math.min.apply(Math, data.map((d) => d.key)),
+        Math.max.apply(Math, data.map((d) => d.key))
+      ])
       .range([0, width])
 
     const yScale = d3.scaleLinear()
-      .domain([valueMin, valueMax])
+      .domain([
+        Math.min.apply(Math, data.map((d) => d.value)),
+        Math.max.apply(Math, data.map((d) => d.value))
+      ])
       .range([height, 0])
 
     const line = d3.line()
@@ -50,39 +54,14 @@ export class NgLineChartComponent implements OnInit, AfterViewInit {
       .y((d) => yScale(d.value))
       .curve(d3.curveMonotoneX)
 
-    svg.attr('width', width + margin.left + margin.right)
-      .attr('height', height + margin.top + margin.bottom)
-
-    const g = svg.append('g')
-      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
-
     g.append('g')
       .attr('class', 'x axis')
       .attr('transform', 'translate(0,' + height + ')')
       .call(d3.axisBottom(xScale))
 
-    if (xlabel) {
-      g.append('text')
-        .attr('transform',
-              'translate(' + (width / 2) + ' ,' +
-                              (height + margin.top) + ')')
-        .style('text-anchor', 'middle')
-        .text(xlabel)
-    }
-
     g.append('g')
       .attr('class', 'y axis')
       .call(d3.axisLeft(yScale))
-
-    if (ylabel) {
-      g.append('text')
-        .attr('transform', 'rotate(-90)')
-        .attr('y', 0 - margin.left)
-        .attr('x', 0 - (height / 2))
-        .attr('dy', '1em')
-        .style('text-anchor', 'middle')
-        .text(ylabel)
-    }
 
     g.append('path')
       .datum(data)
@@ -115,6 +94,25 @@ export class NgLineChartComponent implements OnInit, AfterViewInit {
           $(this).css('opacity', '0.8')
         })
 
+    if (xlabel) {
+      g.append('text')
+        .attr('transform',
+              'translate(' + (width / 2) + ' ,' +
+                              (height + margin.top) + ')')
+        .style('text-anchor', 'middle')
+        .text(xlabel)
+    }
+
+    if (ylabel) {
+      g.append('text')
+        .attr('transform', 'rotate(-90)')
+        .attr('y', 0 - margin.left)
+        .attr('x', 0 - (height / 2))
+        .attr('dy', '1em')
+        .style('text-anchor', 'middle')
+        .text(ylabel)
+    }
+
     if (title) {
       g.append('text')
         .attr('x', (width / 2))
@@ -125,7 +123,7 @@ export class NgLineChartComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    tippy('[title]', {
+    tippy('.dot', {
       content(reference) {
         const title = reference.getAttribute('title');
         reference.removeAttribute('title');

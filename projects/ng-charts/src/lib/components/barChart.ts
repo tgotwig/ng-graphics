@@ -26,56 +26,40 @@ export class NgBarChartComponent implements OnInit, AfterViewInit {
     const ylabel = this.ylabel
     const svg = d3.select('svg')
 
-    const margin = {top: 40, right: 20, bottom: 50, left: 50}
+    const margin = {top: 40, right: 20, bottom: 50, left: 60}
     const width = +document.querySelector('svg').clientWidth - margin.left - margin.right
     const height = +document.querySelector('svg').clientHeight - margin.top - margin.bottom
-
-    const x = d3.scaleBand().rangeRound([0, width]).padding(0.1)
-    const y = d3.scaleLinear().rangeRound([height, 0])
 
     const g = svg.append('g')
       .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
-    x.domain(data.map( (d) => d.key))
-    y.domain([0, d3.max(data, (d) => d.value)])
+    const xScale = d3.scaleBand()
+      .rangeRound([0, width])
+      .padding(0.1)
+      .domain(data.map( (d) => d.key))
+
+    const yScale = d3.scaleLinear()
+      .rangeRound([height, 0])
+      .domain([0, d3.max(data, (d) => d.value)])
 
     g.append('g')
       .attr('class', 'axis axis--x')
       .attr('transform', 'translate(0,' + height + ')')
-      .call(d3.axisBottom(x))
-
-    if (xlabel) {
-      g.append('text')
-        .attr('transform',
-              'translate(' + (width / 2) + ' ,' +
-                              (height + margin.top) + ')')
-        .style('text-anchor', 'middle')
-        .text(xlabel)
-    }
+      .call(d3.axisBottom(xScale))
 
     g.append('g')
       .attr('class', 'axis axis--y')
-      .call(d3.axisLeft(y))
-
-    if (ylabel) {
-      g.append('text')
-        .attr('transform', 'rotate(-90)')
-        .attr('y', 0 - margin.left)
-        .attr('x', 0 - (height / 2))
-        .attr('dy', '1em')
-        .style('text-anchor', 'middle')
-        .text(ylabel)
-    }
+      .call(d3.axisLeft(yScale))
 
     g.selectAll('.bar')
       .data(data)
       .enter()
       .append('rect')
         .attr('class', 'bar')
-        .attr('x', (d) => x(d.key))
-        .attr('y', (d) => y(d.value))
-        .attr('width', x.bandwidth())
-        .attr('height', (d) => height - y(d.value))
+        .attr('x', (d) => xScale(d.key))
+        .attr('y', (d) => yScale(d.value))
+        .attr('width', xScale.bandwidth())
+        .attr('height', (d) => height - yScale(d.value))
         .attr('title', (d) => `
           <div style="text-align: left;">
             Key: <b>${d.key}</b><br>
@@ -91,6 +75,25 @@ export class NgBarChartComponent implements OnInit, AfterViewInit {
           $(this).css('opacity', '0.8')
         })
 
+    if (xlabel) {
+      g.append('text')
+        .attr('transform',
+              'translate(' + (width / 2) + ' ,' +
+                              (height + margin.top) + ')')
+        .style('text-anchor', 'middle')
+        .text(xlabel)
+    }
+
+    if (ylabel) {
+      g.append('text')
+        .attr('transform', 'rotate(-90)')
+        .attr('y', 0 - margin.left)
+        .attr('x', 0 - (height / 2))
+        .attr('dy', '1em')
+        .style('text-anchor', 'middle')
+        .text(ylabel)
+    }
+
     if (title) {
       g.append('text')
         .attr('x', (width / 2))
@@ -101,7 +104,7 @@ export class NgBarChartComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    tippy('[title]', {
+    tippy('.bar', {
       content(reference) {
         const title = reference.getAttribute('title');
         reference.removeAttribute('title');
