@@ -5,7 +5,7 @@
     "start": "ng serve",
     "build:web": "ng build",
     "build:lib": "ng build ngCharts",
-    "deploy:web": "ng build --base-href https://tgotwig.github.io/ng-graphics/ && npx angular-cli-ghpages",
+    "deploy:web": "ng build && npx firebase-tools deploy",
     "deploy:lib": "ng build ngCharts && cd dist/ng-charts && npm publish"
   },
   "private": true,
